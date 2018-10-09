@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/url.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background: white;
+			}
+			.myIcon{
+				font-size: 20px;
+			}
+			#forgot{
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			.wrap{
+				width: 100%;
+				box-sizing: border-box;
+				position: absolute;
+				bottom: 50px;
+				padding: 10px;
+				left: 0;
+			}
+			.form{
+				background: #F5F5F5;
+				padding: 0 5px;
+				border-radius: 6px;
+			}
+			.form .formItem{
+				width: 100%;
+				height: 45px;
+				border-top: 1px solid #E4E4E4;
+				display: flex;
+			}
+			.form .formItem:nth-child(1){
+				border-top: 0 solid transparent;
+				border-top: none;
+			}
+			.form .formItem input[type='text']{
+				line-height: 21px;
+				width: 100%;
+			    height: 45px; 
+			    margin-bottom: 0; 
+			    padding: 0; 
+			    -webkit-user-select: text; 
+			    border-radius: 3px; 
+			    outline: 0; 
+			    background-color: transparent; 
+				outline: none;
+				-webkit-appearance: none;
+				border-radius: 0;
+				border: none;
+				font-size: 15px;
+				box-sizing: border-box;
+				padding:0 5px;
+			}
+			.form .formItem input.code{
+				flex: 1;
+				margin-right: 5px;
+			}
+			.form .formItem .codeBtn{
+				display: inline-block;
+				width: 50px;
+				height: 26px;
+				line-height: 26px;
+				font-size: 12px;
+				background: #E7E7E7;
+				margin-top: 10px;
+				border-radius: 25px;
+				text-align: center;
+				color: #888888;
+				box-sizing: border-box;
+				padding:0;
+				margin-right: 5px;
+			}
+			.wrap .btn{
+				display: inline-block;
+				width: 100%;
+				height: 40px;
+				margin: 20px 0 0 0;
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="forgot">
+			<div class="wrap">
+				<form class="form">
+					<div class="formItem">
+				    	<input id="usermail" type="text" placeholder="输入您的邮箱">
+				    </div>
+				    <div class="formItem">
+				        <input id="code" class="code" type="text" placeholder="输入验证码">
+				        <button type="button" id="codeBtn" class="codeBtn">获取</button>
+				    </div>
+				</form>
+				<button id="next" type="button" class="btn mui-btn mui-btn-primary">下一步</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var oWrap = document.querySelector('.wrap');
+			window.addEventListener('resize',function(){
+				var h = document.documentElement.clientHeight || document.body.clientHeight;
+				var a = h > 430 ? '50px' : '5px';
+				oWrap.style.bottom = a;
+			});
+		</script>
+		<script src="forgot.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+{
+  "index.html": {
+    "resources": [
+      "components/pullrefresh.html"
+    ],
+    "refer": [
+      "components/pullrefresh.html"
+    ]
+  },
+  "components/Home/home.html": {
+    "resources": [
+      "components/Home/list.html"
+    ],
+    "refer": [
+      "components/Home/list.html",
+      "components/User/user.html",
+      "components/Home/add.html",
+      "components/Detail/detail.html",
+      "components/Add/add.html"
+    ]
+  },
+  "components/Login/login.html": {
+    "refer": [
+      "components/Home/home.html",
+      "components/Register/register.html",
+      "components/Forgot/forgot.html"
+    ]
+  },
+  "components/Register/register.html": {
+    "refer": [
+      "components/Register/register.html",
+      "components/Register/regSubmit.html"
+    ]
+  },
+  "components/Register/regSubmit.html": {
+    "refer": [
+      "components/Login/login.html"
+    ]
+  },
+  "components/Forgot/forgot.html": {
+    "refer": [
+      "components/Forgot/forgotSubmit.html"
+    ]
+  },
+  "components/Forgot/forgotSubmit.html": {
+    "refer": [
+      "components/Login/login.html"
+    ]
+  },
+  "components/User/user.html": {
+    "refer": [
+      "components/Login/login.html",
+      "components/Dashboard/dashboard.html",
+      "components/User/userInfo.html",
+      "components/Forgot/forgot.html",
+      "components/User/updatePass.html"
+    ]
+  },
+  "components/Dashboard/dashboard.html": {
+    "refer": [
+      "components/Login/login.html",
+      "components/Home/home.html"
+    ]
+  }
+}

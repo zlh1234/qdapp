@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont/iconfont.css"/>
+		<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/loading.css"/>
+		<script src="../../js/vue-tap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/url.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			[v-cloak] {
+				display: none;
+			}
+			html,body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+			#dropMenu{
+				display: inline-block;
+				line-height: 44px;
+				padding: 0 8px;
+				color: #007aff;
+			}
+			#dropMenu i{
+				font-weight: 400;
+				font-size: 20px;
+			}
+			.wrap{
+				height: 100%;
+				width: 100%;
+			}
+			.mui-content{
+				height: 100%;
+				width: 100%;
+				position: relative;
+			}
+			.btnWrap{
+				height: 30%;
+				min-height: 180px;
+				width: 100%;
+				background: #27BFC5;/*686868*/
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+			.btnWrap .qdBtn{
+				width: 80px;
+				height: 80px;
+				/*color: white;*/
+				color: #686868;
+				border-radius: 50%;
+				background: white;
+				font-size: 16px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				box-shadow: 0px 0px 2px 1px rgba(255,255,255,.3);
+			}
+			.btnWrap .qdBtn:active{
+				background: #D4D4D4;
+			}
+			.btnWrap .qdBtn.punched{
+				background: #EBEBEB;
+				color: #686868;
+				box-shadow: 0px 0px 2px 1px rgba(0,0,0,.3);
+			}
+			.btnWrap .qdBtn.punched:active{
+				background: #DBDBDB;
+			}
+			.btnWrap .qdBtn i{
+				font-size: 20px;
+				display: inline-block;
+				margin: 5px 0;
+			}
+			.btnWrap .info{
+				width: 100%;
+				margin-top:10px;
+			}
+			.btnWrap .info .title{
+				padding: 0 10%;
+				margin-bottom: 0;
+				color: #FAFAFA;
+				text-align: center;
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				/*white-space: nowrap;*/
+				display: -webkit-box;
+            	-webkit-line-clamp: 2;
+            	-webkit-box-orient: vertical;
+			}
+			.btnWrap .info .mInfo{
+				margin: 5px 0 0 0;
+				box-sizing: border-box;
+			}
+			.btnWrap .info .mInfo .time{
+				text-align: center;
+				/*color: #666666;*/
+				color: #EEEEEE;
+				margin-bottom: 0;
+			}
+			.btnWrap .info .mInfo .time i{
+				font-size: 13px;
+			}
+			.btnWrap .info .mInfo .remark{
+				padding: 0 10%;
+				width: 100%;
+				margin-top: 5px;
+				text-align: center;
+				color: #EEEEEE;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.content{
+				position: relative;
+				height: 70%;
+				width: 100%;
+				background: #EEF3F9;
+			}
+			.content .contentTitle{
+				margin-bottom: 0;
+				line-height: 30px;
+				padding: 0 15px;
+				font-size: 14px;
+				color: #666666;
+			}
+			.content .contentTitle span:last-child{
+				float: right;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div v-cloak class="wrap">
+			<!--loading-->
+			<div :class="['loading',{'show':isLoading}]">
+				<div class="spinner">
+					<div class="bounce1"></div>
+					<div class="bounce2"></div>
+					<div class="bounce3"></div>
+				</div>
+			</div>
+			
+			<!--弹出菜单-->
+			<div style="width:140px;" id="popover" class="mui-popover sharePopover">
+				<ul class="mui-table-view">
+				  	<li class="mui-table-view-cell">
+				  		<a style="color: #686868;" href="#sheet1">
+				  			<i class="iconfont icon-fenxiang1"></i>
+				  			分享
+				  		</a>
+				  	</li>
+				  	<li style="color: #686868;" class="mui-table-view-cell" v-tap.stop="[deleteList]">
+				  		<i class="iconfont icon-icon7"></i>
+				  		删除
+				  	</li>
+				</ul>
+			</div>
+			
+			<!--操作表 分享选择-->
+			<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+			    <!-- 可选择菜单 -->
+			    <ul class="mui-table-view">
+			      <li class="mui-table-view-cell">
+			        <a id="wxYou" v-tap.stop="[shareYou]" href="#">
+			        	<i class="iconfont icon-weixin"></i>
+			        	分享给朋友
+			        </a>
+			      </li>
+			      <li class="mui-table-view-cell">
+			        <a id="wxQuan" v-tap.stop="[shareQuan]" href="#">
+			        	<i class="iconfont icon-zhangshangcaifuyemianshoujiban344"></i>
+			        	分享到朋友圈
+			        </a>
+			      </li>
+			    </ul>
+			    <!-- 取消菜单 -->
+			    <ul class="mui-table-view">
+			      <li class="mui-table-view-cell">
+			        <a href="#sheet1"><b>取消</b></a>
+			      </li>
+			    </ul>
+			</div>
+			
+			<header class="mui-bar mui-bar-nav" style="background:#27BFC5;box-shadow: 0 0 0 #ccc;">
+			    <a style="color: white;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			    <h1 class="mui-title" style="color: white;">签到</h1>
+			    
+			    <a style="color: white;" href="#popover" id="dropMenu" class="mui-pull-right">
+			    	<i class="iconfont icon-caidan"></i>
+			    </a>
+			</header>
+			
+			<div class="mui-content" style="padding-top: 43px;">
+				<div class="btnWrap">
+					<a v-if="!isPunch" v-tap.stop="[punch]" class="qdBtn" href="javascript:;">
+						<i class="iconfont icon-edit"></i>
+						<span>签到</span>
+					</a>
+					<div v-else class="qdBtn punched">
+						<i style="font-size: 38px;" class="iconfont icon-selected"></i>
+						<span>{{okText}}</span>
+					</div>
+					<div class="info">
+						<p class="title">{{listinfo.listName}}</p>
+						<div class="mInfo">
+							<p class="time">
+								<i class="iconfont icon-clock"></i>
+								<span>
+									{{listinfo.listStarttime}}
+									 — 
+									{{listinfo.listEndtime=='' ? '无' : listinfo.listEndtime}}
+								</span>
+							</p>
+							<p v-tap.stop="[alertRemark]" class="remark">
+								<span>备注:</span>
+								<span>{{listinfo.listRemark=='' ? '无' : listinfo.listRemark}}</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<div style="z-index: 10;" class="contentTitle mui-clearfix">
+						<span>签到记录</span>
+						<span>已签{{currData.length}}天</span>
+					</div>
+					<div style="height: 100%;margin-top: 30px;padding-bottom:30px;z-index: 9;" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<ul class="mui-table-view">
+							    <li v-for="(v,i) in currData" class="mui-table-view-cell">
+									<div v-tap="[deleteDetail,v.detailed_id,i]" class="mui-slider-right mui-disabled">
+										<a class="mui-btn mui-btn-red">删除</a>
+									</div>
+									<div style="color: #666666;" class="mui-slider-handle">
+										{{v.marktimeString}}
+									</div>
+							    </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="share.js" type="text/javascript" charset="utf-8"></script>
+		<script src="detail.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

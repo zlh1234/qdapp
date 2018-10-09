@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont/iconfont.css"/>
+		<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/url.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background: white;
+			}
+			.myIcon{
+				font-size: 20px;
+			} 
+			
+			.login{
+				height: 100%;
+				width: 100%;
+				position: relative;
+			}
+			.logo{
+				background: url(../assets/logo108x108.png) left top/cover no-repeat;
+				width: 98px;
+				height: 98px;
+				margin: 0 auto 40px auto;
+			}
+			.form{
+				width: 100%;
+				height: 320px;
+				position: absolute;
+				bottom: 80px;
+				left: 0;
+			}
+			.form .mui-input-row{
+				height: 40px;
+			}
+			.form .mui-input-row label{
+				width: 20%;
+				text-align: center;
+			}
+			.form .mui-input-row label~input{
+				width: 80%;
+				color:#686868;
+			}
+			
+			.form .submit{
+				width: 94%;
+				height: 40px;
+				margin-top: 10px;
+				margin-left: 3%;
+			}
+			
+			.forgot {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 80px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="login">
+			<div class="form">
+				<div class="logo"></div>
+				<form class="mui-input-group">
+				    <div class="mui-input-row">
+				        <label><i class="myIcon iconfont icon-account"></i></label>
+				    	<input id="usermail" data-type="邮箱" type="text" class="mui-input-clear" placeholder="邮箱">
+				    </div>
+				    <div class="mui-input-row">
+				        <label><i class="myIcon iconfont icon-password"></i></label>
+				    	<input id="password" data-type="密码" type="password" class="mui-input-password" placeholder="密码">
+				    </div>
+				</form>
+				<button 
+					id="loginBtn" 
+					type="button" 
+					data-loading-icon="mui-spinner mui-spinner-custom"
+					data-loading-text="登录中"
+					class="submit mui-btn mui-btn-primary">登录</button>
+				<button id="regBtn" type="button" class="submit mui-btn">注册</button>
+			</div>
+			
+			<a id="forgot" class="forgot" href="javascript:;">忘记密码</a>
+		</div>
+		
+		<script src="login.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

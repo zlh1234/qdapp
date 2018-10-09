@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/vue-tap.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/iconfont/iconfont.css"/>
+		<script src="../../js/url.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.avatarBox{
+				width: 65%;
+				height: 40px;
+				margin-left: 35%;
+			}
+			.avatarBox .avatar{
+				display: inline-block;
+				width: 36px;
+				height: 36px;
+				margin-top:2px;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				background-position: left top;
+			}
+			
+			.avatarWrap{
+				position: absolute;
+				left: 0;
+				right: 0;
+				width: 0;
+				height: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				box-sizing: border-box;
+				overflow: hidden;
+				opacity: 0;
+				z-index: -1;
+			}
+			.avatarWrap.avatarShow{
+				width: 100%;
+				height: 100%;
+				z-index: 999;
+				opacity: 1;
+			}
+			.avatarWrap .selectAvatar{
+				background: white;
+				width: 94%;
+				border-radius: 6px;
+				padding: 20px 0;
+				text-align: center;
+				box-sizing: border-box;
+			}
+			.avatarWrap .selectAvatar .imgWrap img{
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.avatarWrap .selectAvatar .imgWrap img.act{
+				border: 2px solid #2295FD;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="userinfo">
+			
+			<div id="avatarWrap" class="avatarWrap">
+				<div class="selectAvatar">
+					<p style="margin-left: 5px;">请选择头像</p>
+					<div v-for="(v,i) in list" :key="i" class="mui-row" style="margin-top: 5px;">
+				        <div v-for="item in v.data" :key="item._id" :data-index="item._id" class="imgWrap mui-col-sm-3 mui-col-xs-3" style="padding: 0 5px;">
+				            <img width="100%" :class="{act:actIndex==item._id}" :src="item.src" alt="头像"/>
+				        </div>
+				    </div>
+				    <button id="close" type="button" class="btn mui-btn">关闭</button>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px;" class="mui-input-group">
+			    <div class="mui-input-row">
+			        <label>头像</label>
+			        <div class="avatarBox" id="updateAvatar">
+			        	<div class="avatar" :style="{backgroundImage: 'url(../assets/avatar/tx'+actIndex+'.jpg)'}"></div>
+			        </div>
+			    </div>
+			    <div class="mui-input-row">
+			        <label>昵称</label>
+			        <input v-model="username" type="text" class="mui-input-clear">
+			    </div>
+			</div>
+			
+		    <button style="width:96%;margin-left: 2%;margin-top: 10px;height: 40px;"
+		    	type="button"
+		    	id="query"
+				data-loading-icon="mui-spinner mui-spinner-custom"
+				data-loading-text="正在加载"
+		    	class="btn mui-btn mui-btn-blue">
+		    	确定
+		    </button>
+		</div>
+	</body>
+	<script src="userInfo.js" type="text/javascript" charset="utf-8"></script>
+</html>

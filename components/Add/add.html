@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/vue.min.js"></script>
+		<script src="../../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/loading.css"/>
+		<script src="../../js/util.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/url.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			html,body{
+				height: 100%;
+				width: 100%;
+				font-family:Helvetica;
+			}
+			.create{
+				display: inline-block;
+				float: right;
+				height: 100%;
+				line-height: 44px;
+				width: 44px;
+				text-align: center;
+			}
+			.wrap{
+				margin-top: 15px;
+				width: 100%;
+				box-sizing: border-box;
+				padding: 0 10px;
+			}
+			.switch{
+				width: 100%;
+				background: white;
+				border: 1px solid rgba(0,0,0,.2);
+				box-sizing: border-box;
+			}
+			.switch p{
+				margin-left: 15px;
+				float: left;
+				height: 100%;
+				line-height: 40px;
+				margin-bottom: 0;
+			}
+			.switch .dataSwitch{
+				margin-top: 4px;
+				float: right;
+			}
+			.switch .dataContent{
+				margin-top: 40px;
+				height: 0;
+				overflow: hidden;
+				transition: all .4s;
+				box-sizing: border-box;
+				line-height: 40px;
+				text-align: center;
+			}
+			.switch .dataContent span{
+				padding-right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="loading" class="loading">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+		
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title" style="color: #686868;">添加任务</h1>
+		    <a href="javascript:;" id="create" class="create">创建</a>
+		</header>
+		<div class="mui-content">
+			<div class="wrap">
+				<div class="input">
+					<input id="listname" type="text" placeholder="名称" />
+				</div>
+				<div class="input">
+					<textarea id="listremark" maxlength="200" rows="8" placeholder="备注" ></textarea>
+				</div>
+				<div class="switch mui-clearfix">
+					<p>截止日期:<span id="endStatus"></span></p>
+					<div id="dataSwitch" class="dataSwitch mui-switch mui-switch-mini">
+						<div class="mui-switch-handle"></div>
+					</div>
+					<div id="dataContent" class="dataContent mui-clearfix">
+						<span id="endDate"></span>
+						<a id="selectDate" href="javascript:;">选择</a>
+					</div>
+				</div>
+				<!--<button type="button" id="aaa">啊啊</button>-->
+			</div>
+		</div>
+		<script src="add.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
